@@ -71,6 +71,23 @@
             border: 2px solid black;
             margin-left: 10px;
         }
+        
+        #add-rectangular-button{
+            display: flex;
+            justify-content: space-between;
+            border: 2px dashed black;
+            background-color: transparent;
+        }
+        #add-rectangular-button button{
+            width: 100px;
+            height: 50px;
+            border-radius: 20px;
+            background-color: transparent;
+            border: transparent;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
 
         .circle {
             width: 40px;
@@ -323,7 +340,7 @@ p {
         <div class="facet-container">
             <div class="left">
                 <label>All Facets</label>
-                <ul id="allFacets" class="facet-list">
+                <ul id="allFacets" class="facet-list first-list">
                     <li class="facet">
                         <div class="circle"></div>
 
@@ -336,11 +353,14 @@ p {
                         <div class="circle"></div>
                         
                         <p>Facet 4</p></li>
+                        <li class="facet button" id="add-rectangular-button">
+                            <button id="add-button">+ Ajoute</button>
+                        </li>
                 </ul>
             </div>
             <div class="right">
                 <label>User Facets</label>
-                <ul id="userFacets" class="facet-list">
+                <ul id="userFacets" class="facet-list second-list">
                     <li class="facet">
                         <div class="circle"><i class="fa-solid fa-check"></i></div>
                         
@@ -351,7 +371,9 @@ p {
                         <p>Facet 6</p></li>
                 </ul>
             </div>
+            
         </div>
+        
         <!-- <div class="grid-container">
             <div class="left-section">
                 <p>En cours</p>
@@ -372,6 +394,9 @@ p {
                 <p>Fini</p>
                  The right section will be empty initially -->
             </div>
+            <!-- <div class="add-rectangular-button">
+                <button id="add-button">+ Ajoute</button>
+            </div> -->
         </div> 
         <div class="form-container">
             <input type="text" id="name-input" placeholder="Name">
@@ -478,22 +503,39 @@ $(function() {
       placeholder: "placeholder",
       delay: 50,
       start: function(event, ui) {
-        let elem = ui.item.find('.circle');
-        if(!elem.is(':empty')){
-            elem.remove();
-            ui.item.prepend('<div class="circle"></div>');
-            console.log("helo1");
-        }
+        if(ui.item.hasClass('button'))
+            return
         else{
-            elem.remove();
-            ui.item.prepend('<div class="circle"><i class="fa-solid fa-check"></i></div>');
+
+            let elem = ui.item.find('.circle');
+            if(!elem.is(':empty')){
+                elem.remove();
+                ui.item.prepend('<div class="circle"></div>');
+                console.log("helo1");
+            }
+            else{
+                elem.remove();
+                ui.item.prepend('<div class="circle"><i class="fa-solid fa-check"></i></div>');
+            }
         }
       
       // Prepend the new element to the dragged item
     
     },
     stop: function(event, ui) {
-        
+        if(ui.item.hasClass('button'))
+            return
+        else{
+            if (!ui.item.closest('ul').hasClass('second-list')) {
+        ui.item.find('.circle').remove();
+        ui.item.prepend('<div class="circle"></div>');
+      }
+      if (!ui.item.closest('ul').hasClass('first-list')) {
+        ui.item.find('.circle').remove();
+        ui.item.prepend('<div class="circle"><i class="fa-solid fa-check"></i></div>');
+      }
+        }
+
       
     }
     })
@@ -527,7 +569,13 @@ $(function() {
       
     
     });
+    
     });
+
+    document.getElementById("add-rectangular-button").addEventListener("click", ()=>{
+        document.querySelector(".form-container").style.display = "flex";
+    })
+    
     
 
 
