@@ -3,6 +3,9 @@
 
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js" integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
@@ -60,17 +63,32 @@
             width: 100%;
             cursor: pointer;
         }
-
-        .circle {
+        .avatar{
             width: 40px;
             height: 40px;
             border-radius: 50%;
             background-color: white;
             border: 2px solid black;
-            margin-left: 80px;
+            margin-left: 10px;
         }
 
-        i {
+        .circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #EEF30F;
+            border: 2px dashed black;
+            margin-left: 10px;
+            margin-right: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .circle i{
+            font-size: 1.6rem;
+        }
+
+        .icon-nav {
             position: absolute;
             top: 38%;
             right: -15%;
@@ -221,6 +239,64 @@
             margin-top: 40px;
             position: relative;
         }
+        .facet-container{
+  display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 0px;
+            width: 130%;
+            margin: 0 auto;
+            position: absolute;
+            top: 240px;
+
+}
+.right {
+  float: right;
+}
+.left {
+  float: left;
+}
+p {
+  clear: both;
+  padding-top: 1em;
+}
+.facet-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-right: 10px;
+  padding: 5px;
+  width: 500px;
+  min-height: 1.5em;
+  font-size: 0.85em;
+}
+.facet-list li {
+  margin: 5px;
+  padding: 5px;
+  font-size: 1.2em;
+  width: 400px;
+  height: 90px;
+  display: flex;
+    align-items: center;
+
+  font-weight: 900;
+  
+}
+.facet-list li.placeholder {
+  height: 1.2em
+}
+.facet {
+  border: 2px solid #000;
+  background-color: #fafafa;
+  cursor: move;
+}
+.facet.ui-sortable-helper {
+  opacity: 0.5;
+}
+.placeholder {
+  border: 1px solid orange;
+  background-color: #fffffd;
+}
     </style>
 </head>
 
@@ -232,9 +308,9 @@
                 <div>Projects</div>
                 <div>Clients</div>
             </div>
-            <div class="circle"></div>
+            <div class="avatar"></div>
         </header>
-        <i class="far fa-bell"></i> <!-- Notifications Icon -->
+        <i class="far fa-bell icon-nav" ></i> <!-- Notifications Icon -->
         <div class="search-cylinder">
             <i class="fas fa-search search-icon"></i>
             <input type="text" placeholder="Search" />
@@ -244,7 +320,39 @@
             <div class="bold-transparent">Commercial</div>
             <div class="bold-transparent">Parking</div>
         </div>
-        <div class="grid-container">
+        <div class="facet-container">
+            <div class="left">
+                <label>All Facets</label>
+                <ul id="allFacets" class="facet-list">
+                    <li class="facet">
+                        <div class="circle"></div>
+
+                        <p>Facet 2</p></li>
+                    <li class="facet">
+                        <div class="circle"></div>
+                        
+                        <p>Facet 3</p></li>
+                    <li class="facet">
+                        <div class="circle"></div>
+                        
+                        <p>Facet 4</p></li>
+                </ul>
+            </div>
+            <div class="right">
+                <label>User Facets</label>
+                <ul id="userFacets" class="facet-list">
+                    <li class="facet">
+                        <div class="circle"><i class="fa-solid fa-check"></i></div>
+                        
+                        <p>Facet 5</p></li>
+                    <li class="facet">
+                        
+                        <div class="circle"><i class="fa-solid fa-check"></i></div>
+                        <p>Facet 6</p></li>
+                </ul>
+            </div>
+        </div>
+        <!-- <div class="grid-container">
             <div class="left-section">
                 <p>En cours</p>
                 <div class="rectangular">
@@ -262,9 +370,9 @@
             </div>
             <div class="right-section">
                 <p>Fini</p>
-                <!-- The right section will be empty initially -->
+                 The right section will be empty initially -->
             </div>
-        </div>
+        </div> 
         <div class="form-container">
             <input type="text" id="name-input" placeholder="Name">
             <input type="text" id="description-input" placeholder="Description">
@@ -274,94 +382,155 @@
     </div>
 
     <script>
-        const addButton = document.getElementById('add-button');
-        const formContainer = document.querySelector('.form-container');
-        const nameInput = document.getElementById('name-input');
-        const descriptionInput = document.getElementById('description-input');
-        const submitButton = document.getElementById('submit-button');
-        const gridContainer = document.querySelector('.grid-container');
-        const leftSection = document.querySelector('.left-section');
-        const rightSection = document.querySelector('.right-section');
+        // const addButton = document.getElementById('add-button');
+        // const formContainer = document.querySelector('.form-container');
+        // const nameInput = document.getElementById('name-input');
+        // const descriptionInput = document.getElementById('description-input');
+        // const submitButton = document.getElementById('submit-button');
+        // const gridContainer = document.querySelector('.grid-container');
+        // const leftSection = document.querySelector('.left-section');
+        // const rightSection = document.querySelector('.right-section');
 
-        addButton.addEventListener('click', () => {
-            formContainer.style.display = 'flex';
+        // addButton.addEventListener('click', () => {
+        //     formContainer.style.display = 'flex';
+        // });
+
+        // submitButton.addEventListener('click', () => {
+        //     const name = nameInput.value;
+        //     const description = descriptionInput.value;
+
+        //     if (name && description) {
+        //         const rectangular = document.createElement('div');
+        //         rectangular.classList.add('rectangular');
+        //         rectangular.innerHTML = `
+        //         <div class="circle"></div>
+        //         <div class="text">${name}</div>
+        //     `;
+        //         leftSection.appendChild(rectangular); // Append the new rectangular element to the left section
+
+        //         nameInput.value = '';
+        //         descriptionInput.value = '';
+        //         formContainer.style.display = 'none';
+        //     }
+        // });
+
+        // let draggedItem = null;
+
+        // gridContainer.addEventListener('dragstart', (event) => {
+        //     const targetRectangular = event.target.closest('.rectangular');
+        //     if (targetRectangular) {
+        //         draggedItem = targetRectangular;
+        //         setTimeout(() => {
+        //             targetRectangular.style.opacity = '0.5';
+        //         }, 0);
+        //     }
+        // });
+
+        // gridContainer.addEventListener('dragend', (event) => {
+        //     const targetRectangular = event.target.closest('.rectangular');
+        //     if (targetRectangular) {
+        //         draggedItem.style.opacity = '1';
+        //         draggedItem = null;
+        //     }
+        // });
+
+        // gridContainer.addEventListener('dragover', (event) => {
+        //     event.preventDefault();
+        //     const targetRectangular = event.target.closest('.rectangular');
+        //     if (draggedItem && targetRectangular && draggedItem !== targetRectangular) {
+        //         targetRectangular.style.border = '2px dashed black';
+        //     }
+        // });
+
+        // gridContainer.addEventListener('dragleave', (event) => {
+        //     const targetRectangular = event.target.closest('.rectangular');
+        //     if (targetRectangular && targetRectangular !== draggedItem) {
+        //         targetRectangular.style.border = '2px solid black';
+        //     }
+        // });
+
+        // gridContainer.addEventListener('drop', (event) => {
+        //     event.preventDefault();
+        //     const targetRectangular = event.target.closest('.rectangular');
+        //     if (draggedItem && targetRectangular && draggedItem !== targetRectangular) {
+        //         const leftSectionRectangulars = leftSection.querySelectorAll('.rectangular');
+        //         const rightSectionRectangulars = rightSection.querySelectorAll('.rectangular');
+
+        //         if (leftSectionRectangulars.length === 1) {
+        //             leftSection.removeChild(draggedItem);
+        //             rightSection.appendChild(draggedItem);
+        //             targetRectangular.style.border = '2px solid black';
+        //         } else if (rightSectionRectangulars.length === 1) {
+        //             rightSection.insertBefore(draggedItem, targetRectangular);
+        //             targetRectangular.style.border = '2px solid black';
+        //         } else {
+        //             const targetRectangularIndex = Array.from(rightSectionRectangulars).indexOf(targetRectangular);
+        //             rightSection.insertBefore(draggedItem, rightSectionRectangulars[targetRectangularIndex]);
+        //             targetRectangular.style.border = '2px solid black';
+        //         }
+        //     }
+        // });
+
+        // My Code 
+$(function() {
+    $("#allFacets, #userFacets").sortable({
+      connectWith: "ul",
+      placeholder: "placeholder",
+      delay: 50,
+      start: function(event, ui) {
+        let elem = ui.item.find('.circle');
+        if(!elem.is(':empty')){
+            elem.remove();
+            ui.item.prepend('<div class="circle"></div>');
+            console.log("helo1");
+        }
+        else{
+            elem.remove();
+            ui.item.prepend('<div class="circle"><i class="fa-solid fa-check"></i></div>');
+        }
+      
+      // Prepend the new element to the dragged item
+    
+    },
+    stop: function(event, ui) {
+        
+      
+    }
+    })
+    .disableSelection()
+    .dblclick( function(e){
+      var item = e.target;
+      if (e.currentTarget.id === 'allFacets') {
+        //move from all to user
+    
+        
+        $(item).fadeOut('fast', function() {
+            $(item).appendTo($('#userFacets')).fadeIn('slow');
+            let elem = $(item).find(".circle");
+            elem.remove();
+            $(item).prepend('<div class="circle"><i class="fa-solid fa-check"></i></div>');
+            
+           
         });
+        
+    } else {
+       
+        //move from user to all
+        $(item).fadeOut('fast', function() {
+          $(item).appendTo($('#allFacets')).fadeIn('slow');
+          let elem = $(item).find(".circle");
+            elem.remove();
+            $(item).prepend('<div class="circle"></div>');
 
-        submitButton.addEventListener('click', () => {
-            const name = nameInput.value;
-            const description = descriptionInput.value;
-
-            if (name && description) {
-                const rectangular = document.createElement('div');
-                rectangular.classList.add('rectangular');
-                rectangular.innerHTML = `
-                <div class="circle"></div>
-                <div class="text">${name}</div>
-            `;
-                leftSection.appendChild(rectangular); // Append the new rectangular element to the left section
-
-                nameInput.value = '';
-                descriptionInput.value = '';
-                formContainer.style.display = 'none';
-            }
         });
+      }
+      
+    
+    });
+    });
+    
 
-        let draggedItem = null;
 
-        gridContainer.addEventListener('dragstart', (event) => {
-            const targetRectangular = event.target.closest('.rectangular');
-            if (targetRectangular) {
-                draggedItem = targetRectangular;
-                setTimeout(() => {
-                    targetRectangular.style.opacity = '0.5';
-                }, 0);
-            }
-        });
-
-        gridContainer.addEventListener('dragend', (event) => {
-            const targetRectangular = event.target.closest('.rectangular');
-            if (targetRectangular) {
-                draggedItem.style.opacity = '1';
-                draggedItem = null;
-            }
-        });
-
-        gridContainer.addEventListener('dragover', (event) => {
-            event.preventDefault();
-            const targetRectangular = event.target.closest('.rectangular');
-            if (draggedItem && targetRectangular && draggedItem !== targetRectangular) {
-                targetRectangular.style.border = '2px dashed black';
-            }
-        });
-
-        gridContainer.addEventListener('dragleave', (event) => {
-            const targetRectangular = event.target.closest('.rectangular');
-            if (targetRectangular && targetRectangular !== draggedItem) {
-                targetRectangular.style.border = '2px solid black';
-            }
-        });
-
-        gridContainer.addEventListener('drop', (event) => {
-            event.preventDefault();
-            const targetRectangular = event.target.closest('.rectangular');
-            if (draggedItem && targetRectangular && draggedItem !== targetRectangular) {
-                const leftSectionRectangulars = leftSection.querySelectorAll('.rectangular');
-                const rightSectionRectangulars = rightSection.querySelectorAll('.rectangular');
-
-                if (leftSectionRectangulars.length === 1) {
-                    leftSection.removeChild(draggedItem);
-                    rightSection.appendChild(draggedItem);
-                    targetRectangular.style.border = '2px solid black';
-                } else if (rightSectionRectangulars.length === 1) {
-                    rightSection.insertBefore(draggedItem, targetRectangular);
-                    targetRectangular.style.border = '2px solid black';
-                } else {
-                    const targetRectangularIndex = Array.from(rightSectionRectangulars).indexOf(targetRectangular);
-                    rightSection.insertBefore(draggedItem, rightSectionRectangulars[targetRectangularIndex]);
-                    targetRectangular.style.border = '2px solid black';
-                }
-            }
-        });
     </script>
 </body>
 
