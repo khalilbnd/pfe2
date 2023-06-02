@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', Arial, sans-serif;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url(projetsbackgound.png);
+        background-color: rgba(0, 0, 0, 0.2);
+        overflow-x: hidden;
+        overflow-y: scroll;
+        scrollbar-width: thin;
+        scrollbar-color: black;
+        margin-right: 30%;
+    }
+
+    body::-webkit-scrollbar {
+        width: 12px;
+        margin-right: 30%;
+    }
+
+    body::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.61);
+        border-radius: 4px;
+        margin-right: 30%;
+        position: absolute;
+        right: 20px;
+    }
+
+    body::-webkit-scrollbar-thumb:hover {
+        background-color: black;
+        margin-right: 30%;
+    }
+
+    body::-webkit-scrollbar-track {
+
+        border-radius: 4px;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        width: 50%;
+        position: absolute;
+        left: 25%;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        border-bottom: 2px solid black;
+    }
+
+    .logo img {
+        width: 40px;
+        height: 50px;
+        margin-right: 100px;
+    }
+
+    .menu-items {
+        display: flex;
+        gap: 100px;
+        font-weight: 700;
+    }
+
+    .menu-items div {
+        transition: color 0.5s ease;
+    }
+
+    .menu-items div:hover {
+        color: #ffffff;
+        background-color: black;
+        padding: 0 15px;
+        border-radius: 20px;
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .circle {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: white;
+        border: 2px solid black;
+        margin-left: 80px;
+    }
+
+    i {
+        position: absolute;
+        top: 38%;
+        right: -15%;
+        font-size: 30px;
+    }
+
+    .search-cylinder {
+        width: 90%;
+        height: 40px;
+        margin: 20px auto;
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 2px solid black;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 110px;
+        left: 3%;
+        opacity: 0.8;
+    }
+
+    .search-cylinder input {
+        border: none;
+        background-color: transparent;
+        outline: none;
+        font-size: 16px;
+        padding: 5px;
+        margin-left: 30px;
+        width: calc(100% - 30px);
+        width: 70%;
+    }
+
+    .search-icon {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #000;
+        font-size: 18px;
+        pointer-events: none;
+    }
+
+    .blocs {
+        position: absolute;
+        top: 240px;
+        width: 150%;
+        height: 800px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 0 10%;
+        gap: 40px;
+        flex-wrap: wrap;
+    }
+
+    .rectangals {
+        flex: 0 0 30%;
+        height: 200px;
+        background-color: #ffffff;
+        width: 20%;
+        border: #000 solid 2px;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        transform: translateY(10px);
+    }
+
+
+    .rectangals:nth-child(1),
+    .rectangals:nth-child(2),
+    .rectangals:nth-child(3),
+    .rectangals:nth-child(4),
+    .rectangals:nth-child(5),
+    .rectangals:nth-child(6) {
+        height: 45%;
+        width: 40%;
+    }
+
+    .circle-label {
+        background-color: #EEF30F;
+        color: rgb(0, 0, 0);
+        border-radius: 50%;
+        border: black 2px dashed;
+        font-size: 50px;
+        font-weight: bold;
+        height: 95px;
+        width: 95px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Space Mono', monospace;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .cylinder-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 80%;
+    }
+
+    .cylinder {
+        width: 220px;
+        height: 40px;
+        background-color: white;
+        border: 2px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: x-small;
+        border-radius: 60px;
+    }
+
+    .cylinder:hover {
+        background-color: #000;
+        color: #fff;
+        border: #fff 2px solid;
+        transform: scale(1.05);
+        cursor: pointer;
+        font-family: 'Space Mono', monospace;
+    }
+
+    .cylinder-label {
+        font-weight: bold;
+        font-family: 'Space Mono', monospace;
+        font-weight: 700;
+    }
+
+    .big-div {
+        position: absolute;
+        top: 15.8%;
+        right: 0;
+        width: 60%;
+        background-image: url(menubackground.png);
+        background-color: rgba(12, 3, 3, 0.418);
+        z-index: 9999;
+        display: none;
+        border: #000 solid 1.5px;
+        padding: 20px;
+        height: 120%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+
+    }
+
+
+    .medium-square {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 50px;
+        padding: 20px;
+        border: 2px solid black;
+        background-color: white;
+        gap: 30px;
+        width: 80%;
+        position: relative;
+        left: 10%;
+        margin-bottom: 20px;
+        /* Added margin-bottom for spacing */
+
+    }
+
+    .left-elements {
+        display: flex;
+        flex-direction: column;
+        gap: 53px;
+        align-items: center;
+        border-right: 2px solid black;
+        padding: 20px;
+        padding-left: 50px;
+        height: 20%;
+    }
+
+    .left-elements img {
+        width: 80px;
+        height: 80px;
+        border-radius: 10px;
+    }
+
+    .medium-square p {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .right-elements {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .right-elements span {
+        font-weight: 700;
+    }
+
+    .right-elements button {
+        padding: 10px 20px;
+        border: none;
+        background-color: black;
+        color: white;
+        font-weight: 700;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .right-elements button:hover {
+        background-color: #333333;
+    }
+
+    h2 {
+        font-family: 'Space Mono', monospace;
+        font-weight: 700;
+        font-size: 70px;
+        position: relative;
+        left: 18%;
+    }
+
+    .newcylinder1 {
+        width: 300px;
+        height: 60px;
+        background-color: #F6F3F2;
+        border: 2px solid black;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: x-small;
+        border-radius: 60px;
+        padding: 0 10px;
+
+    }
+
+    .newcylinder2 {
+        width: 300px;
+        height: 60px;
+        background-color: #E6DBEB;
+        border: 2px solid black;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: x-small;
+        border-radius: 60px;
+        padding: 0 10px;
+
+    }
+
+    .newcylinder3 {
+        width: 300px;
+        height: 60px;
+        background-color: #E2C5ED;
+        border: 2px solid black;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: x-small;
+        border-radius: 60px;
+        padding: 0 10px;
+
+    }
+
+    .newcylinder4 {
+        width: 300px;
+        height: 60px;
+        background-color: #DDA0F4;
+        border: 2px solid black;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: x-small;
+        border-radius: 60px;
+        padding: 0 10px;
+    }
+
+    .newcylinder5 {
+        width: 300px;
+        height: 60px;
+        background-color: #CA68EF;
+        border: 2px solid black;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: x-small;
+        border-radius: 40px;
+        padding: 0 10px;
+
+    }
+
+    .left-text {
+        font-family: 'Space Mono', monospace;
+        font-weight: 700;
+        font-size: 20px;
+    }
+
+    .right-text {
+        font-family: 'Space Mono', monospace;
+        font-weight: 700;
+        font-size: 20px;
+    }
+
+    .num {
+        font-family: 'Space Mono', monospace;
+        font-weight: 700;
+        font-size: 40px;
+    }
+
+    .f {
+        font-family: 'Space Mono', monospace;
+        font-weight: 700;
+        font-size: 40px;
+    }
+
+    .surface {
+        font-family: 'Space Mono', monospace;
+        font-weight: 700;
+        font-size: 40px;
+    }
+
+    .lot {
+        font-family: 'Space Mono', monospace;
+        font-weight: 700;
+        font-size: 40px;
+    }
+
+    .close-button {
+        position: absolute;
+        top: -5px;
+        right: 15px;
+        padding: 5px;
+        background-color: transparent;
+        border: none;
+        font-size: 40px;
+        font-weight: bold;
+        color: rgb(0, 0, 0);
+        cursor: pointer;
+        font-family: 'Space Mono', monospace;
+    }
+
+    .close-button:hover {
+        background-color: #E63946;
+        color: white;
+    }
+
+    #mediumDiv {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 50px;
+        padding: 20px;
+        border: 2px solid black;
+        border-radius: 12px;
+        background-color: white;
+        gap: 30px;
+        width: 40%;
+        height: 400px;
+        position: relative;
+        left: 60%;
+        margin-bottom: 20px;
+        z-index: 10000;
+
+
+    }
+    .mediumDiv {
+        border: 1px solid black;
+        padding: 10px;
+        width: 200px;
+      }
+      
+      .circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #ccc;
+        text-align: center;
+        line-height: 50px;
+        font-weight: bold;
+      }
+      
+      .price, .paid, .remaining {
+        
+        font-family: 'Space Mono', monospace;
+        font-size: 30px;
+        position: relative;
+        left: 10%;
+        top: 50px;
+      }
+      .name{
+        font-family: 'Space Mono', monospace;
+        font-size: 25px;
+
+      }
+      .remaining{
+        border: black 2px dashed;
+        background-color: #E63946;
+       width: 80%;
+      }
+</style>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo"><img src="logologin.png" alt="Logo"></div>
+            <div class="menu-items">
+                <div>Projects</div>
+                <div>Clients</div>
+            </div>
+            <div class="circle"></div>
+        </header>
+        <i class="far fa-bell"></i> <!-- Notifications Icon -->
+        <div class="search-cylinder">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" placeholder="Search" />
+        </div>
+        <div class="blocs">
+            <div class="rectangals">
+                <div class="circle-label">B1</div>
+                <div class="cylinder-container">
+                    <div class="cylinder">
+                        <div class="cylinder-label">Etage 1</div>
+                    </div>
+                    <div class="cylinder">
+                        <div class="cylinder-label">Etage 2</div>
+                    </div>
+                    <div class="cylinder">
+                        <div class="cylinder-label">Etage 3</div>
+                    </div>
+                    <div class="cylinder">
+                        <div class="cylinder-label">Etage 4</div>
+                    </div>
+                </div>
+            </div>
+            <div class="rectangals">
+                <div class="circle-label">B2</div>
+                <div class="cylinder-container">
+                    <div class="cylinder">
+                        <div class="cylinder-label">Etage 1</div>
+                    </div>
+                    <div class="cylinder">
+                        <div class="cylinder-label">Etage 2</div>
+                    </div>
+                    <div class="cylinder">
+                        <div class="cylinder-label">Etage 3</div>
+                    </div>
+                    <div class="cylinder">
+                        <div class="cylinder-label">Etage 4</div>
+                    </div>
+                </div>
+            </div>
+            <div class="rectangals">
+                <div class="circle-label">B3</div>
+                <div class="cylinder-container">
+                    <div class="cylinder">
+                        <div class="cylinder-label">Etage 1</div>
+                    </div>
+                    <div class="cylinder">
+                        <div class="cylinder-label">Etage 2</div>
+                    </div>
+                    <div class="cylinder">
+                        <div class="cylinder-label">Etage 3</div>
+                    </div>
+                    <div class="cylinder">
+                        <div class="cylinder-label">Etage 4</div>
+                    </div>
+                </div>
+            </div>
+            <div class="rectangals">
+                <div class="circle-label">B4</div>
+                <div class="cylinder-container">
+                    <div class="cylinder">
+                        <div class="cylinder-label">Etage 1</div>
+                    </div>
+                    <div class="cylinder">
+                        <div class="cylinder-label">Etage 2</div>
+                    </div>
+                    <div class="cylinder">
+                        <div class="cylinder-label">Etage 3</div>
+                    </div>
+                    <div class="cylinder">
+                        <div class="cylinder-label">Etage 4</div>
+                    </div>
+                </div>
+            </div>
+            <div class="rectangals">
+                <div class="circle-label">B5</div>
+                <div class="cylinder-container">
+                    <div class="cylinder">
+                        <div class="cylinder-label">Etage 1</div>
+                    </div>
+                    <div class="cylinder">
+                        <div class="cylinder-label">Etage 2</div>
+                    </div>
+                    <div class="cylinder">
+                        <div class="cylinder-label">Etage 3</div>
+                    </div>
+                    <div class="cylinder">
+                        <div class="cylinder-label">Etage 4</div>
+                    </div>
+                </div>
+            </div>
+            <div class="rectangals">
+                <div class="circle-label">B6</div>
+                <div class="cylinder-container">
+                    <div class="cylinder">
+                        <div class="cylinder-label">Etage 1</div>
+                    </div>
+                    <div class="cylinder">
+                        <div class="cylinder-label">Etage 2</div>
+                    </div>
+                    <div class="cylinder">
+                        <div class="cylinder-label">Etage 3</div>
+                    </div>
+                    <div class="cylinder">
+                        <div class="cylinder-label">Etage 4</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="big-div">
+        <h2 class="big-title">B1 - Etage 1</h2>
+        <button class="close-button">x</button>
+        <div class="medium-square">
+            <div class="left-elements">
+                <div class="num">N°: 01</div>
+                <div class="f">F3 3</div>
+                <div class="surface">123 m²</div>
+                <div class="lot">LOT</div>
+            </div>
+            <div class="right-elements">
+                <div class="newcylinder1" onclick="showMediumDiv(1)">
+                    <span class="left-text">Commende</span>
+                    <span class="right-text">20%</span>
+                </div>
+                <div class="newcylinder2">
+                    <span class="left-text">Fondation</span>
+                    <span class="right-text">20%</span>
+                </div>
+                <div class="newcylinder3">
+                    <span class="left-text">Break + Biton</span>
+                    <span class="right-text">20%</span>
+                </div>
+                <div class="newcylinder4">
+                    <span class="left-text">Finie</span>
+                    <span class="right-text">20%</span>
+                </div>
+                <div class="newcylinder5">
+                    <span class="left-text">Cle</span>
+                    <span class="right-text">20%</span>
+                </div>
+            </div>
+
+        </div>
+        <div class="medium-square">
+            <div class="left-elements">
+                <div class="num">N°: 01</div>
+                <div class="f">F3 3</div>
+                <div class="surface">123 m²</div>
+                <div class="lot">LOT</div>
+            </div>
+            <div class="right-elements">
+                <div id="newcylinder1" onclick="showMediumDiv(1)">
+                    <span class="left-text">Commende</span>
+                    <span class="right-text">20%</span>
+                </div>
+                <div class="newcylinder2">
+                    <span class="left-text">Fondation</span>
+                    <span class="right-text">20%</span>
+                </div>
+                <div class="newcylinder3">
+                    <span class="left-text">Break + Biton</span>
+                    <span class="right-text">20%</span>
+                </div>
+                <div class="newcylinder4">
+                    <span class="left-text">Finie</span>
+                    <span class="right-text">20%</span>
+                </div>
+                <div class="newcylinder5">
+                    <span class="left-text">Cle</span>
+                    <span class="right-text">20%</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div id="mediumDiv" style="display: none;">
+        <div class="circle">A</div>
+        <h3 class="name">Abass A</h3>
+        <div class="price">Prix: 150000</div>
+        <div class="paid">Payé: 120000 DA</div>
+        <div class="remaining">Rest: 30000</div>
+        
+    </div>
+    <script>
+
+        function showMediumDiv(cylinderNumber) {
+            var mediumDiv = document.getElementById("mediumDiv");
+            var circleDiv = mediumDiv.querySelector(".circle");
+            var cylinderDiv = document.getElementById("newcylinder" + cylinderNumber);
+
+            // Update the letter inside the circle
+            var letter = cylinderDiv.textContent;
+            circleDiv.textContent = "A";
+
+            // Update the rest of the content
+            // ...
+
+            mediumDiv.style.display = "block";
+        }
+        document.querySelector(".close-button").addEventListener("click", function () {
+            var element = document.querySelector(".big-div");
+            element.style.display = "none"; // Hide the element
+        });
+        // Get the .cylinder elements
+        const cylinders = document.querySelectorAll('.cylinder');
+
+        // Get the .big-div element
+        const bigDiv = document.querySelector('.big-div');
+
+        // Add click event listeners to each .cylinder element
+        cylinders.forEach(cylinder => {
+            cylinder.addEventListener('click', () => {
+                // Show the big div
+                bigDiv.style.display = 'block';
+            });
+        });
+
+    </script>
+</body>
+
+</html>

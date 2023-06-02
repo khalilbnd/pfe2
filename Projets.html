@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', Arial, sans-serif;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(projetsbackgound.png);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            width: 50%;
+            position: absolute;
+            left: 25%;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 2px solid black;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 50px;
+            margin-right: 100px;
+        }
+
+        .menu-items {
+            display: flex;
+            gap: 100px;
+            font-weight: 700;
+        }
+
+        .menu-items div {
+            transition: color 0.5s ease;
+        }
+
+        .menu-items div:hover {
+            color: #ffffff;
+            background-color: black;
+            padding: 0 15px;
+            border-radius: 20px;
+            height: 100%;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            border: 2px solid black;
+            margin-left: 80px;
+        }
+
+        i {
+            position: absolute;
+            top: 38%;
+            right: -15%;
+            font-size: 30px;
+        }
+
+        /* New styles for the search cylinder */
+        .search-cylinder {
+            width: 90%;
+            height: 40px;
+            margin: 20px auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 2px solid black;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            position: absolute;
+            top: 110px;
+            left: 3%;
+            opacity: 0.8;
+        }
+
+        .search-cylinder input {
+            border: none;
+            background-color: transparent;
+            outline: none;
+            font-size: 16px;
+            padding: 5px;
+            margin-left: 30px;
+            width: calc(100% - 30px);
+            width: 70%;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #000;
+            font-size: 18px;
+            pointer-events: none;
+        }
+
+        /* New styles for the additional menu */
+        .additional-menu {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding: 0 20px;
+            width: 100%;
+            margin: 0 auto;
+            position: absolute;
+            top: 190px;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .additional-menu div {
+            transition: border-bottom 0.5s ease;
+            cursor: pointer;
+        }
+
+        .additional-menu div:hover {
+            border-bottom: 2px solid black;
+        }
+
+        /* Additional styles for bold and transparent elements */
+        .bold-transparent {
+            font-weight: bold;
+            opacity: 0.8;
+            font-family: 'Space Mono', monospace;
+        }
+
+        /* Additional styles for the new div sections */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            width: 130%;
+            margin: 0 auto;
+            position: absolute;
+            top: 240px;
+        }
+
+        .grid-container .rectangular {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            padding: 10px;
+            height: 120px;
+            width: 100%;
+            box-shadow: 0 2px 6px rgba(0.3, 0.4, 0.4, 0.6);
+        }
+
+        .grid-container .rectangular .circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: #000 2px dashed;
+            background-color: #EEF30F;
+            margin-right: auto;
+            margin-left: 0;
+        }
+
+        .grid-container .rectangular .text {
+            font-size: 14px;
+            margin-left: auto;
+            font-family: 'Space Mono', monospace;
+        }
+
+        /* Additional styles for the form */
+        .form-container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            width: 50%;
+            max-width: 500px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 2px solid black;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            top: 140%;
+        }
+
+        .form-container input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .form-container button {
+            padding: 5px 15px;
+            font-size: 14px;
+        }
+
+        .add-rectangular-button {
+            width: 100%;
+            margin-top: 40px;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo"><img src="logologin.png" alt="Logo"></div>
+            <div class="menu-items">
+                <div>Projects</div>
+                <div>Clients</div>
+            </div>
+            <div class="circle"></div>
+        </header>
+        <i class="far fa-bell"></i> <!-- Notifications Icon -->
+        <div class="search-cylinder">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" placeholder="Search" />
+        </div>
+        <div class="additional-menu">
+            <div class="bold-transparent">Projets</div>
+            <div class="bold-transparent">Commercial</div>
+            <div class="bold-transparent">Parking</div>
+        </div>
+        <div class="grid-container">
+            <div class="left-section">
+                <p>En cours</p>
+                <div class="rectangular">
+                    <div class="circle"></div>
+                    <div class="text">Text 1</div>
+                </div>
+                <div class="rectangular">
+                    <div class="circle"></div>
+                    <div class="text">Text 2</div>
+                    
+                </div>
+                <div class="add-rectangular-button">
+                    <button id="add-button">+ Ajoute</button>
+                </div>
+            </div>
+            <div class="right-section">
+                <p>Fini</p>
+                <!-- The right section will be empty initially -->
+            </div>
+        </div>
+        <div class="form-container">
+            <input type="text" id="name-input" placeholder="Name">
+            <input type="text" id="description-input" placeholder="Description">
+            <button id="submit-button">Submit</button>
+        </div>
+
+    </div>
+
+    <script>
+        const addButton = document.getElementById('add-button');
+        const formContainer = document.querySelector('.form-container');
+        const nameInput = document.getElementById('name-input');
+        const descriptionInput = document.getElementById('description-input');
+        const submitButton = document.getElementById('submit-button');
+        const gridContainer = document.querySelector('.grid-container');
+        const leftSection = document.querySelector('.left-section');
+        const rightSection = document.querySelector('.right-section');
+
+        addButton.addEventListener('click', () => {
+            formContainer.style.display = 'flex';
+        });
+
+        submitButton.addEventListener('click', () => {
+            const name = nameInput.value;
+            const description = descriptionInput.value;
+
+            if (name && description) {
+                const rectangular = document.createElement('div');
+                rectangular.classList.add('rectangular');
+                rectangular.innerHTML = `
+                <div class="circle"></div>
+                <div class="text">${name}</div>
+            `;
+                leftSection.appendChild(rectangular); // Append the new rectangular element to the left section
+
+                nameInput.value = '';
+                descriptionInput.value = '';
+                formContainer.style.display = 'none';
+            }
+        });
+
+        let draggedItem = null;
+
+        gridContainer.addEventListener('dragstart', (event) => {
+            const targetRectangular = event.target.closest('.rectangular');
+            if (targetRectangular) {
+                draggedItem = targetRectangular;
+                setTimeout(() => {
+                    targetRectangular.style.opacity = '0.5';
+                }, 0);
+            }
+        });
+
+        gridContainer.addEventListener('dragend', (event) => {
+            const targetRectangular = event.target.closest('.rectangular');
+            if (targetRectangular) {
+                draggedItem.style.opacity = '1';
+                draggedItem = null;
+            }
+        });
+
+        gridContainer.addEventListener('dragover', (event) => {
+            event.preventDefault();
+            const targetRectangular = event.target.closest('.rectangular');
+            if (draggedItem && targetRectangular && draggedItem !== targetRectangular) {
+                targetRectangular.style.border = '2px dashed black';
+            }
+        });
+
+        gridContainer.addEventListener('dragleave', (event) => {
+            const targetRectangular = event.target.closest('.rectangular');
+            if (targetRectangular && targetRectangular !== draggedItem) {
+                targetRectangular.style.border = '2px solid black';
+            }
+        });
+
+        gridContainer.addEventListener('drop', (event) => {
+            event.preventDefault();
+            const targetRectangular = event.target.closest('.rectangular');
+            if (draggedItem && targetRectangular && draggedItem !== targetRectangular) {
+                const leftSectionRectangulars = leftSection.querySelectorAll('.rectangular');
+                const rightSectionRectangulars = rightSection.querySelectorAll('.rectangular');
+
+                if (leftSectionRectangulars.length === 1) {
+                    leftSection.removeChild(draggedItem);
+                    rightSection.appendChild(draggedItem);
+                    targetRectangular.style.border = '2px solid black';
+                } else if (rightSectionRectangulars.length === 1) {
+                    rightSection.insertBefore(draggedItem, targetRectangular);
+                    targetRectangular.style.border = '2px solid black';
+                } else {
+                    const targetRectangularIndex = Array.from(rightSectionRectangulars).indexOf(targetRectangular);
+                    rightSection.insertBefore(draggedItem, rightSectionRectangulars[targetRectangularIndex]);
+                    targetRectangular.style.border = '2px solid black';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
