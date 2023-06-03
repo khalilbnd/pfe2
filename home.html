@@ -202,7 +202,9 @@
         }
 
         /* New styles for the form */
-        .form-container {
+        .form-container,
+        .form-container2,
+        .form-container3 {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -213,6 +215,7 @@
             height: 100%;
             z-index: 2;
         }
+
 
         .form-container form {
             display: flex;
@@ -234,24 +237,29 @@
         .form-container form input,
         .form-container form button {
             transition: background-color 0.3s ease;
+            border: #000 1px solid;
         }
 
         .form-container form input:focus,
         .form-container form button:focus {
-            background-color: white;
+            background: linear-gradient(to bottom right, white, #EEF30F);
+
         }
 
         .form-container form input[type="text"],
         .form-container form input[type="tel"] {
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.719);
             border: none;
             padding: 5px;
             margin-bottom: 10px;
+            border: #000 2px solid;
+            border-radius: 8px;
         }
 
         .form-container form input[type="text"]:focus,
         .form-container form input[type="tel"]:focus {
             background-color: white;
+            background: linear-gradient(to bottom right, white, #EEF30F);
         }
 
         .form-container form button {
@@ -262,6 +270,37 @@
             color: black;
             font-weight: bold;
             cursor: pointer;
+            margin-top: 20px;
+            border: #000 solid 2px;
+        }
+
+        .form-container2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+
+        .form-container2 form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(246, 243, 242, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            z-index: 3;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: black 2px solid;
         }
 
         h2 {
@@ -278,6 +317,7 @@
             width: 30%;
             display: flex;
             justify-content: space-between;
+
         }
 
         .table-container {
@@ -313,11 +353,54 @@
             right: -15%;
             font-size: 30px;
         }
-        music-player-icon i{
+
+        .radio-buttons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .radio-buttons label {
+            margin-right: 10px;
+        }
+
+        .form-container3 {
+            display: none;
             position: absolute;
-            top: 70%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 600px;
+            z-index: 1000;
+
+        }
+
+        .form-container3 form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            padding: 20px;
+            z-index: 1000;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: black 2px solid;
+            width: 100%;
+            height: 100%;
+        }
+
+        .form-container3 form input,
+        .form-container3 form button {
+            transition: background-color 0.3s ease;
+            border: #000 2px solid;
+            border-radius: 8px;
         }
     </style>
+
 </head>
 
 <body>
@@ -326,14 +409,14 @@
             <div class="logo"><img src="logologin.png" alt="Logo"></div>
             <div class="menu-items">
                 <div onclick="window.location.href = 'Projets.html';">Projects</div>
-                <div onclick="window.location.href = 'Client.html';">Clients</div>
+                <div onclick="window.location.href = 'clients.html';">Clients</div>
             </div>
             <div class="circle"></div>
         </header>
         <i class="far fa-bell"></i> <!-- Notifications Icon -->
     </div>
     <audio id="music-player" src="musicbackground.mp3"></audio>
-        <i class="fas fa-music music-player-icon" style="position: absolute; top: 7%; left: 17%;"></i>
+    <i class="fas fa-music music-player-icon" style="position: absolute; top: 7%; left: 17%;"></i>
     <div class="buttons">
         <div class="button1">
             <a href="#">C</a>
@@ -357,66 +440,205 @@
             <input type="text" id="prenom" name="prenom" required>
             <label for="telephone">Numéro de téléphone:</label>
             <input type="tel" id="telephone" name="telephone">
+            <label for="adresse">Adresse:</label>
+            <input type="text" id="adresse" name="adresse">
+            <label for="projet">Projet intéressé:</label>
+            <input type="text" id="projet" name="projet">
+            <label for="Type de Client">Type de Client:</label>
+            <div class="radio-buttons">
+                <label for="acheteur">Acheteur:</label>
+                <input type="radio" id="acheteur" name="statut" value="acheteur">
+                <label for="potentiel">Potentiel:</label>
+                <input type="radio" id="potentiel" name="statut" value="potentiel">
+            </div>
             <button type="submit">Submit</button>
         </form>
     </div>
-    <h2>Activités récentes</h2>
-    <div class="tables-container">
-        <div class="table-container">
-            <table>
-                <tr>
-                    <th class="separator">Projet1</th>
-                </tr>
-                <tr>
-                    <td>Description1</td>
-                </tr>
-            </table>
+    <div class="form-container2">
+        <form>
+            <div class="radio-buttons">
+                <input type="radio" id="radio1" name="radio" value="Option 1" onclick="showForm(1)">
+                <label for="radio1">Appartement</label>
+                <br>
+                <input type="radio" id="radio2" name="radio" value="Option 2" onclick="showForm(2)">
+                <label for="radio2">Commercial</label>
+                <br>
+                <input type="radio" id="radio3" name="radio" value="Option 3" onclick="showForm(3)">
+                <label for="radio3">Parking</label>
+            </div>
+        </form>
+
+        <div id="form1" class="form-container3">
+            <form>
+                <label for="nom">Nom de projet:</label>
+                <input type="text" id="nom" name="nom" required>
+                <label for="description">Description:</label>
+                <textarea style="border: #000 solid 2px;" id="description" name="description" rows="7"
+                    cols="50"></textarea>
+                <label for="documents">Documents:</label>
+                <input style="width: 100%;" type="file" id="documents" name="documents" multiple>
+                <label for="number">n° de Blocs:</label>
+                <select style="border: #000 solid 2px;" id="number" name="number">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="3">4</option>
+                    <option value="3">5</option>
+                    <option value="3">6</option>
+                    <option value="3">7</option>
+                    <option value="3">8</option>
+                    <option value="20">9</option>
+                    <option value="20">10</option>
+                    <option value="20">11</option>
+                    <option value="20">12</option>
+                    <option value="20">13</option>
+                    <option value="20">14</option>
+                    <option value="20">15</option>
+                    <option value="20">16</option>
+                    <option value="20">17</option>
+                    <option value="20">18</option>
+                    <option value="20">19</option>
+                    <option value="20">20</option>
+                    <option value="20">21</option>
+                </select>
+                <label for="number">n° d'etages:</label>
+                <select style="border: #000 solid 2px;" id="number" name="number">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="3">4</option>
+                    <option value="3">5</option>
+                    <option value="3">6</option>
+                    <option value="3">7</option>
+                    <option value="3">8</option>
+                    <option value="20">9</option>
+                    <option value="20">10</option>
+                    <option value="20">11</option>
+                    <option value="20">12</option>
+                    <option value="20">13</option>
+                    <option value="20">14</option>
+                    <option value="20">15</option>
+                    <option value="20">16</option>
+                    <option value="20">17</option>
+                    <option value="20">18</option>
+                    <option value="20">19</option>
+                    <option value="20">20</option>
+                    <option value="20">21</option>
+                </select>
+
+                <label for="number">n° d'Appartement:</label>
+                <select style="border: #000 solid 2px;" id="number" name="number">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="3">4</option>
+                    <option value="3">5</option>
+                    <option value="3">6</option>
+                    <option value="3">7</option>
+                    <option value="3">8</option>
+                    <option value="20">9</option>
+                    <option value="20">10</option>
+                    <option value="20">11</option>
+                    <option value="20">12</option>
+                    <option value="20">13</option>
+                    <option value="20">14</option>
+                    <option value="20">15</option>
+                    <option value="20">16</option>
+                    <option value="20">17</option>
+                    <option value="20">18</option>
+                    <option value="20">19</option>
+                    <option value="20">20</option>
+                    <option value="20">21</option>
+                </select>
+            </form>
         </div>
-        <div class="table-container">
-            <table>
-                <tr>
-                    <th class="separator">Projet2</th>
-                </tr>
-                <tr>
-                    <td>Description2</td>
-                </tr>
-            </table>
+
+        <div id="form2" class="form-container3">
+            <form>
+                <!-- Add your Commercial form fields here -->
+            </form>
         </div>
-    </div>
+
+        <div id="form3" class="form-container3">
+            <form>
+                <!-- Add your Parking form fields here -->
+            </form>
+        </div>
+        <h2>Activités récentes</h2>
+        <div class="tables-container">
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th class="separator">Projet1</th>
+                    </tr>
+                    <tr>
+                        <td>Description1</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th class="separator">Projet2</th>
+                    </tr>
+                    <tr>
+                        <td>Description2</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
 
 
-    <script>
-        const button1 = document.querySelector('.button1');
-        const button2 = document.querySelector('.button2');
-        const formContainer = document.querySelector('.form-container');
+        <script>
+            const button1 = document.querySelector('.button1');
+            const button2 = document.querySelector('.button2');
+            const formContainer = document.querySelector('.form-container');
+            const formContainer2 = document.querySelector('.form-container2');
 
-        button1.addEventListener('click', () => {
-            formContainer.style.display = 'flex';
-        });
+            button1.addEventListener('click', () => {
+                formContainer.style.display = 'flex';
+            });
 
-        button2.addEventListener('click', () => {
-            formContainer.style.display = 'flex';
-        });
+            button2.addEventListener('click', () => {
+                formContainer2.style.display = 'flex';
+            });
 
-        formContainer.addEventListener('submit', (event) => {
-            event.preventDefault();
-            formContainer.style.display = 'none';
-        });
-        const musicPlayer = document.getElementById('music-player');
-  const musicPlayerIcon = document.querySelector('.music-player-icon');
+            formContainer.addEventListener('submit', (event) => {
+                event.preventDefault();
+                formContainer.style.display = 'none';
+            });
+            formContainer2.addEventListener('submit', (event) => {
+                event.preventDefault();
+                formContainer2.style.display = 'none';
+            });
 
-  musicPlayerIcon.addEventListener('click', () => {
-    if (musicPlayer.paused) {
-      musicPlayer.play();
-      musicPlayerIcon.classList.add('fa-pause');
-      musicPlayerIcon.classList.remove('fa-play');
-    } else {
-      musicPlayer.pause();
-      musicPlayerIcon.classList.add('fa-play');
-      musicPlayerIcon.classList.remove('fa-pause');
-    }
-  });
-    </script>
+            const musicPlayer = document.getElementById('music-player');
+            const musicPlayerIcon = document.querySelector('.music-player-icon');
+
+            musicPlayerIcon.addEventListener('click', () => {
+                if (musicPlayer.paused) {
+                    musicPlayer.play();
+                    musicPlayerIcon.classList.add('fa-pause');
+                    musicPlayerIcon.classList.remove('fa-play');
+                } else {
+                    musicPlayer.pause();
+                    musicPlayerIcon.classList.add('fa-play');
+                    musicPlayerIcon.classList.remove('fa-pause');
+                }
+            });
+            function showForm(formNumber) {
+                // Hide all form containers
+                const formContainers = document.querySelectorAll('.form-container3');
+                formContainers.forEach(container => {
+                    container.style.display = 'none';
+                });
+
+                // Show the selected form container
+                const selectedForm = document.getElementById(`form${formNumber}`);
+                selectedForm.style.display = 'block';
+            }
+
+        </script>
 </body>
 
 </html>

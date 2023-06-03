@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', Arial, sans-serif;
+        }
+
+        .music-player-icon {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #000;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F6F3F2;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            width: 50%;
+            position: absolute;
+            left: 25%;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #F6F3F2;
+            border-bottom: 2px solid black;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 50px;
+            margin-right: 100px;
+        }
+
+        .menu-items {
+            display: flex;
+            gap: 100px;
+            font-weight: 700;
+        }
+
+        .menu-items div {
+            transition: color 0.5s ease;
+        }
+
+        .menu-items div:hover {
+            color: #ffffff;
+            background-color: black;
+            padding: 0 15px;
+            border-radius: 20px;
+            height: 100%;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            border: 2px solid black;
+            margin-left: 100px;
+        }
+
+        i {
+            position: absolute;
+            top: 38%;
+            right: -15%;
+            font-size: 30px;
+        }
+
+        .content {
+            position: absolute;
+            top: 20%;
+            left: 120px;
+            margin-top: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: none;
+            position: relative;
+            left: 100px;
+        }
+
+        table td,
+        table th {
+            padding: 20px;
+            text-align: center;
+            border: none;
+        }
+
+        table th {
+            background-color: #F6F3F2;
+            font-weight: bold;
+        }
+
+        .initial-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #F6F3F2;
+            border: 2px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .table-spacing td,
+        .table-spacing th {
+            padding: 10px;
+        }
+
+        .more-info-row {
+            display: none;
+        }
+
+        .is-expanded {
+            display: table-row !important;
+        }
+
+        .more-info-container {
+            background-color: #F6F3F2;
+            border: #000 2px solid;
+            padding: 20px;
+            border-radius: 5px;
+            width: 50%;
+            margin: 0 auto;
+            margin-bottom: 20px; /* Adjust margin-bottom to create space above the container */
+            position: relative;
+            top: -80px;
+        }
+
+        .more-info-container p {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo"><img src="logologin.png" alt="Logo"></div>
+            <div class="menu-items">
+                <div onclick="window.location.href = 'Projets.html';">Projects</div>
+                <div onclick="window.location.href = 'Client.html';">Clients</div>
+            </div>
+            <div class="circle"></div>
+        </header>
+        <i class="far fa-bell"></i> <!-- Notifications Icon -->
+    </div>
+    <div class="content">
+        <h2><span style="font-weight: normal;">Liste de</span> <span style="font-weight: bold;">Clients</span></h2>
+        <table class="table-spacing">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Nom</th>
+                    <th>Numero</th>
+                    <th>Email</th>
+                    <th>Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="initial-circle">HM</div>
+                    </td>
+                    <td>Hadj Mohammed</td>
+                    <td>555-689-4376</td>
+                    <td>victoria.jones99@gmail.com</td>
+                    <td>08.04.23</td>
+                    <td><i class="fas fa-info-circle" onclick="toggleMoreInfoRow(this)"></i></td>
+                </tr>
+                <tr class="more-info-row">
+                    <td colspan="6">
+                        <div class="more-info-container">
+                            <p><strong>Participant au Projet:</strong> résidence vue sur mer Mostaganem Kharrouba</p>
+                            <p><strong>Etape de versement:</strong> 50%</p>
+                            <p><strong>Type de Client:</strong> Acheteur</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="initial-circle">YD</div>
+                    </td>
+                    <td>Yacine Djabo</td>
+                    <td>555-689-4376</td>
+                    <td>victoria.jones99@gmail.com</td>
+                    <td>08.04.23</td>
+                    <td><i class="fas fa-info-circle" onclick="toggleMoreInfoRow(this)"></i></td>
+                </tr>
+                <tr class="more-info-row">
+                    <td colspan="6">
+                        <div class="more-info-container">
+                            <p><strong>Participant au Projet:</strong> résidence vue sur mer Mostaganem Kharrouba</p>
+                            <p><strong>Etape de versement:</strong> 50%</p>
+                            <p><strong>Type de Client:</strong> Acheteur</p>
+                        </div>
+                    </td>
+                </tr>
+                <!-- Additional rows -->
+                <tr>
+                    <td>
+                        <div class="initial-circle">AB</div>
+                    </td>
+                    <td>John Doe</td>
+                    <td>555-123-4567</td>
+                    <td>johndoe@example.com</td>
+                    <td>08.04.23</td>
+                    <td><i class="fas fa-info-circle" onclick="toggleMoreInfoRow(this)"></i></td>
+                </tr>
+                <tr class="more-info-row">
+                    <td colspan="6">
+                        <div class="more-info-container">
+                            <p><strong>Participant au Projet:</strong> Project XYZ</p>
+                            <p><strong>Etape de versement:</strong> 75%</p>
+                            <p><strong>Type de Client:</strong> Vendeur</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="initial-circle">EF</div>
+                    </td>
+                    <td>Jane Smith</td>
+                    <td>555-987-6543</td>
+                    <td>janesmith@example.com</td>
+                    <td>08.04.23</td>
+                    <td><i class="fas fa-info-circle" onclick="toggleMoreInfoRow(this)"></i></td>
+                </tr>
+                <tr class="more-info-row">
+                    <td colspan="6">
+                        <div class="more-info-container">
+                            <p><strong>Participant au Projet:</strong> Project ABC</p>
+                            <p><strong>Etape de versement:</strong> 30%</p>
+                            <p><strong>Type de Client:</strong> Acheteur</p>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function toggleMoreInfoRow(icon) {
+            const row = icon.parentNode.parentNode.nextElementSibling;
+            row.classList.toggle('is-expanded');
+        }
+    </script>
+</body>
+
+</html>
