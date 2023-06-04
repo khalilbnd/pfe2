@@ -9,7 +9,7 @@ document.querySelector("#signup").addEventListener('click', ()=>{
     }
     
 
-    fetch('http://localhost:3000/auth/signup', {
+    fetch('https://immobile-pfe.onrender.com/auth/signup', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
