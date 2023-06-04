@@ -3,7 +3,7 @@ document.querySelector('#login').addEventListener('click', () => {
     const email = document.querySelector('input[type="email"]').value;
     const password = document.querySelector('input[type="password"]').value;
 
-    fetch('http://localhost:3000/auth', {
+    fetch('https://immobile-pfe.onrender.com/auth', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
