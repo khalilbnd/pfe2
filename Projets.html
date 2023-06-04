@@ -3,12 +3,17 @@
 
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js" integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"
+        integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -63,7 +68,8 @@
             width: 100%;
             cursor: pointer;
         }
-        .avatar{
+
+        .avatar {
             width: 40px;
             height: 40px;
             border-radius: 50%;
@@ -71,14 +77,15 @@
             border: 2px solid black;
             margin-left: 10px;
         }
-        
-        #add-rectangular-button{
+
+        #add-rectangular-button {
             display: flex;
             justify-content: space-between;
             border: 2px dashed black;
             background-color: transparent;
         }
-        #add-rectangular-button button{
+
+        #add-rectangular-button button {
             width: 100px;
             height: 50px;
             border-radius: 20px;
@@ -101,7 +108,8 @@
             justify-content: center;
             align-items: center;
         }
-        .circle i{
+
+        .circle i {
             font-size: 1.6rem;
         }
 
@@ -256,8 +264,9 @@
             margin-top: 40px;
             position: relative;
         }
-        .facet-container{
-  display: grid;
+
+        .facet-container {
+            display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             padding: 0px;
@@ -266,54 +275,63 @@
             position: absolute;
             top: 240px;
 
-}
-.right {
-  float: right;
-}
-.left {
-  float: left;
-}
-p {
-  clear: both;
-  padding-top: 1em;
-}
-.facet-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  margin-right: 10px;
-  padding: 5px;
-  width: 500px;
-  min-height: 1.5em;
-  font-size: 0.85em;
-}
-.facet-list li {
-  margin: 5px;
-  padding: 5px;
-  font-size: 1.2em;
-  width: 400px;
-  height: 90px;
-  display: flex;
-    align-items: center;
+        }
 
-  font-weight: 900;
-  
-}
-.facet-list li.placeholder {
-  height: 1.2em
-}
-.facet {
-  border: 2px solid #000;
-  background-color: #fafafa;
-  cursor: move;
-}
-.facet.ui-sortable-helper {
-  opacity: 0.5;
-}
-.placeholder {
-  border: 1px solid orange;
-  background-color: #fffffd;
-}
+        .right {
+            float: right;
+        }
+
+        .left {
+            float: left;
+        }
+
+        p {
+            clear: both;
+            padding-top: 1em;
+        }
+
+        .facet-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            margin-right: 10px;
+            padding: 5px;
+            width: 500px;
+            min-height: 1.5em;
+            font-size: 0.85em;
+        }
+
+        .facet-list li {
+            margin: 5px;
+            padding: 5px;
+            font-size: 1.2em;
+            width: 400px;
+            height: 90px;
+            display: flex;
+            align-items: center;
+
+            font-weight: 900;
+
+        }
+
+        .facet-list li.placeholder {
+            height: 1.2em
+        }
+
+        .facet {
+            border: 2px solid #000;
+            background-color: #fafafa;
+            cursor: move;
+        }
+
+        .facet.ui-sortable-helper {
+            opacity: 0.5;
+        }
+
+        .placeholder {
+            border: 1px solid orange;
+            background-color: #fffffd;
+        }
     </style>
 </head>
 
@@ -327,7 +345,7 @@ p {
             </div>
             <div class="avatar"></div>
         </header>
-        <i class="far fa-bell icon-nav" ></i> <!-- Notifications Icon -->
+        <i class="far fa-bell icon-nav"></i> <!-- Notifications Icon -->
         <div class="search-cylinder">
             <i class="fas fa-search search-icon"></i>
             <input type="text" placeholder="Search" />
@@ -339,41 +357,20 @@ p {
         </div>
         <div class="facet-container">
             <div class="left">
-                <label>All Facets</label>
+                <label>En Cours</label>
                 <ul id="allFacets" class="facet-list first-list">
-                    <li class="facet">
-                        <div class="circle"></div>
 
-                        <p>Facet 2</p></li>
-                    <li class="facet">
-                        <div class="circle"></div>
-                        
-                        <p>Facet 3</p></li>
-                    <li class="facet">
-                        <div class="circle"></div>
-                        
-                        <p>Facet 4</p></li>
-                        <li class="facet button" id="add-rectangular-button">
-                            <button id="add-button">+ Ajoute</button>
-                        </li>
                 </ul>
             </div>
             <div class="right">
-                <label>User Facets</label>
+                <label>Fini</label>
                 <ul id="userFacets" class="facet-list second-list">
-                    <li class="facet">
-                        <div class="circle"><i class="fa-solid fa-check"></i></div>
-                        
-                        <p>Facet 5</p></li>
-                    <li class="facet">
-                        
-                        <div class="circle"><i class="fa-solid fa-check"></i></div>
-                        <p>Facet 6</p></li>
+
                 </ul>
             </div>
-            
+
         </div>
-        
+
         <!-- <div class="grid-container">
             <div class="left-section">
                 <p>En cours</p>
@@ -393,20 +390,22 @@ p {
             <div class="right-section">
                 <p>Fini</p>
                  The right section will be empty initially -->
-            </div>
-            <!-- <div class="add-rectangular-button">
+    </div>
+    <!-- <div class="add-rectangular-button">
                 <button id="add-button">+ Ajoute</button>
             </div> -->
-        </div> 
-        <div class="form-container">
-            <input type="text" id="name-input" placeholder="Name">
-            <input type="text" id="description-input" placeholder="Description">
-            <button id="submit-button">Submit</button>
-        </div>
+    </div>
+    <div class="form-container">
+        <input type="text" id="name-input" placeholder="Name">
+        <input type="text" id="description-input" placeholder="Description">
+        <button id="submit-button">Submit</button>
+    </div>
 
     </div>
 
     <script>
+        let enCoursCount = 0;
+        let finiCount = 0;
         // const addButton = document.getElementById('add-button');
         // const formContainer = document.querySelector('.form-container');
         // const nameInput = document.getElementById('name-input');
@@ -497,86 +496,179 @@ p {
         // });
 
         // My Code 
-$(function() {
-    $("#allFacets, #userFacets").sortable({
-      connectWith: "ul",
-      placeholder: "placeholder",
-      delay: 50,
-      start: function(event, ui) {
-        if(ui.item.hasClass('button'))
-            return
-        else{
+        let ul_pending = document.getElementById("allFacets");
+        let ul_finished = document.getElementById("userFacets");
+        fetch('http://localhost:3000/get-pending-project')
+            .then(res => res.json())
+            .then(data => {
+                enCoursCount = parseInt(data.length)
+                document.querySelector('.facet-container .left label').innerHTML = `En cours ${enCoursCount}`
+                data.forEach(element => {
+                    let li = document.createElement('li')
+                    li.setAttribute('class', 'facet')
+                    li.setAttribute('id', element.project_id)
 
-            let elem = ui.item.find('.circle');
-            if(!elem.is(':empty')){
-                elem.remove();
-                ui.item.prepend('<div class="circle"></div>');
-                console.log("helo1");
-            }
-            else{
-                elem.remove();
-                ui.item.prepend('<div class="circle"><i class="fa-solid fa-check"></i></div>');
-            }
-        }
-      
-      // Prepend the new element to the dragged item
-    
-    },
-    stop: function(event, ui) {
-        if(ui.item.hasClass('button'))
-            return
-        else{
-            if (!ui.item.closest('ul').hasClass('second-list')) {
-        ui.item.find('.circle').remove();
-        ui.item.prepend('<div class="circle"></div>');
-      }
-      if (!ui.item.closest('ul').hasClass('first-list')) {
-        ui.item.find('.circle').remove();
-        ui.item.prepend('<div class="circle"><i class="fa-solid fa-check"></i></div>');
-      }
-        }
+                    let div = document.createElement('div')
+                    div.setAttribute('class', 'circle')
 
-      
-    }
-    })
-    .disableSelection()
-    .dblclick( function(e){
-      var item = e.target;
-      if (e.currentTarget.id === 'allFacets') {
-        //move from all to user
-    
-        
-        $(item).fadeOut('fast', function() {
-            $(item).appendTo($('#userFacets')).fadeIn('slow');
-            let elem = $(item).find(".circle");
-            elem.remove();
-            $(item).prepend('<div class="circle"><i class="fa-solid fa-check"></i></div>');
-            
-           
+
+
+                    li.appendChild(div)
+
+                    let p = document.createElement('p')
+                    p.innerHTML = `${element.project_name} - ${element.project_desc}`;
+                    li.appendChild(p)
+
+                    ul_pending.appendChild(li)
+
+                });
+            })
+        fetch('http://localhost:3000/get-finished-project')
+            .then(res => res.json())
+            .then(data => {
+                finiCount = parseInt(data.length)
+                document.querySelector('.facet-container .right label').innerHTML = `Fini ${finiCount}`
+                data.forEach(element => {
+                    let li = document.createElement('li')
+                    li.setAttribute('class', 'facet')
+                    li.setAttribute('id', element.project_id)
+
+                    let div = document.createElement('div')
+                    div.setAttribute('class', 'circle')
+
+                    let i = document.createElement('i')
+                    i.setAttribute('class', 'fa-solid fa-check')
+                    div.appendChild(i)
+
+                    li.appendChild(div)
+
+                    let p = document.createElement('p')
+                    p.innerHTML = `${element.project_name} - ${element.project_desc}`;
+                    li.appendChild(p)
+
+                    ul_finished.appendChild(li)
+
+                });
+            })
+
+
+        $(function () {
+            $("#allFacets, #userFacets").sortable({
+                connectWith: "ul",
+                placeholder: "placeholder",
+                delay: 50,
+                start: function (event, ui) {
+                    if (ui.item.hasClass('button'))
+                        return
+                    else {
+
+                        let elem = ui.item.find('.circle');
+                        if (!elem.is(':empty')) {
+                            elem.remove();
+                            ui.item.prepend('<div class="circle"></div>');
+                        }
+                        else {
+                            elem.remove();
+                            ui.item.prepend('<div class="circle"><i class="fa-solid fa-check"></i></div>');
+                        }
+                    }
+
+                    // Prepend the new element to the dragged item
+
+                },
+                stop: function (event, ui) {
+                    if (ui.item.hasClass('button'))
+                        return
+                    else {
+                        if (!ui.item.closest('ul').hasClass('second-list')) {
+                            ui.item.find('.circle').remove();
+                            ui.item.prepend('<div class="circle"></div>');
+                            fetch(`http://localhost:3000/pending-project/${ui.item.attr('id')}`, {
+                                method: 'PUT'
+                            }).then(res => res.text()) // or res.json()
+                                .then(res => {
+                                    finiCount -= 1;
+                                    enCoursCount += 1;
+                                    document.querySelector('.facet-container .left label').innerHTML = `En cours ${enCoursCount}`
+                                    document.querySelector('.facet-container .right label').innerHTML = `Fini ${finiCount}`
+                                    console.log(res)
+                                }
+                                )
+                        }
+                        if (!ui.item.closest('ul').hasClass('first-list')) {
+                            ui.item.find('.circle').remove();
+                            ui.item.prepend('<div class="circle"><i class="fa-solid fa-check"></i></div>');
+                            fetch(`http://localhost:3000/finished-project/${ui.item.attr('id')}`, {
+                                method: 'PUT'
+                            }).then(res => res.text())
+                                .then(res => {
+                                    enCoursCount -= 1;
+                                    finiCount += 1;
+                                    document.querySelector('.facet-container .left label').innerHTML = `En cours ${enCoursCount}`
+                                    document.querySelector('.facet-container .right label').innerHTML = `Fini ${finiCount}`
+                                }) // or res.json()
+                        }
+                    }
+
+
+                }
+            })
+                .disableSelection()
+                .dblclick(function (e) {
+                    var item = e.target;
+                    if (e.currentTarget.id === 'allFacets') {
+                        //move from all to user
+
+
+                        $(item).fadeOut('fast', function () {
+                            $(item).appendTo($('#userFacets')).fadeIn('slow');
+                            let elem = $(item).find(".circle");
+                            elem.remove();
+                            $(item).prepend('<div class="circle"><i class="fa-solid fa-check"></i></div>');
+                            fetch(`http://localhost:3000/finished-project/${$(item).attr('id')}`, {
+                                method: 'PUT'
+                            }).then(res => res.text())
+                                .then(res => {
+                                    enCoursCount -= 1;
+                                    finiCount += 1;
+                                    document.querySelector('.facet-container .left label').innerHTML = `En cours ${enCoursCount}`
+                                    document.querySelector('.facet-container .right label').innerHTML = `Fini ${finiCount}`
+                                })
+
+                        });
+
+                    } else {
+
+                        //move from user to all
+                        $(item).fadeOut('fast', function () {
+                            $(item).appendTo($('#allFacets')).fadeIn('slow');
+                            let elem = $(item).find(".circle");
+                            elem.remove();
+                            $(item).prepend('<div class="circle"></div>');
+                            fetch(`http://localhost:3000/pending-project/${$(item).attr('id')}`, {
+                                method: 'PUT'
+                            }).then(res => res.text()) // or res.json()
+                                .then(res => {
+                                    finiCount -= 1;
+                                    enCoursCount += 1;
+                                    document.querySelector('.facet-container .left label').innerHTML = `En cours ${enCoursCount}`
+                                    document.querySelector('.facet-container .right label').innerHTML = `Fini ${finiCount}`
+                                    console.log(res)
+                                }
+                                )
+                        });
+                    }
+
+
+                });
+
         });
-        
-    } else {
-       
-        //move from user to all
-        $(item).fadeOut('fast', function() {
-          $(item).appendTo($('#allFacets')).fadeIn('slow');
-          let elem = $(item).find(".circle");
-            elem.remove();
-            $(item).prepend('<div class="circle"></div>');
 
-        });
-      }
-      
-    
-    });
-    
-    });
+        document.getElementById("add-rectangular-button").addEventListener("click", () => {
+            document.querySelector(".form-container").style.display = "flex";
+        })
 
-    document.getElementById("add-rectangular-button").addEventListener("click", ()=>{
-        document.querySelector(".form-container").style.display = "flex";
-    })
-    
-    
+
 
 
     </script>

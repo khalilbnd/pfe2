@@ -376,7 +376,8 @@
 
         }
 
-        .form-container3 form {
+        .form-container3 .form {
+            background-color: white;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -393,8 +394,8 @@
             height: 100%;
         }
 
-        .form-container3 form input,
-        .form-container3 form button {
+        .form-container3 .form input,
+        .form-container3 .form button {
             transition: background-color 0.3s ease;
             border: #000 2px solid;
             border-radius: 8px;
@@ -433,7 +434,6 @@
     <img src="background.png" alt="Background Image" class="animated-image">
 
     <div class="form-container">
-        <form>
             <label for="nom">Nom:</label>
             <input type="text" id="nom" name="nom" required>
             <label for="prenom">Prénom:</label>
@@ -452,7 +452,6 @@
                 <input type="radio" id="potentiel" name="statut" value="potentiel">
             </div>
             <button type="submit">Submit</button>
-        </form>
     </div>
     <div class="form-container2">
         <form>
@@ -469,89 +468,90 @@
         </form>
 
         <div id="form1" class="form-container3">
-            <form>
+            <div class="form">
                 <label for="nom">Nom de projet:</label>
-                <input type="text" id="nom" name="nom" required>
+                <input type="text" id="nom-projet" name="nom" required>
                 <label for="description">Description:</label>
                 <textarea style="border: #000 solid 2px;" id="description" name="description" rows="7"
                     cols="50"></textarea>
                 <label for="documents">Documents:</label>
                 <input style="width: 100%;" type="file" id="documents" name="documents" multiple>
                 <label for="number">n° de Blocs:</label>
-                <select style="border: #000 solid 2px;" id="number" name="number">
+                <select style="border: #000 solid 2px;" id="nbr_bloc" name="nbr_bloc">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
-                    <option value="3">4</option>
-                    <option value="3">5</option>
-                    <option value="3">6</option>
-                    <option value="3">7</option>
-                    <option value="3">8</option>
-                    <option value="20">9</option>
-                    <option value="20">10</option>
-                    <option value="20">11</option>
-                    <option value="20">12</option>
-                    <option value="20">13</option>
-                    <option value="20">14</option>
-                    <option value="20">15</option>
-                    <option value="20">16</option>
-                    <option value="20">17</option>
-                    <option value="20">18</option>
-                    <option value="20">19</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
                     <option value="20">20</option>
                     <option value="20">21</option>
                 </select>
                 <label for="number">n° d'etages:</label>
-                <select style="border: #000 solid 2px;" id="number" name="number">
+                <select style="border: #000 solid 2px;" id="nbr-etage" name="nbr-etage">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
-                    <option value="3">4</option>
-                    <option value="3">5</option>
-                    <option value="3">6</option>
-                    <option value="3">7</option>
-                    <option value="3">8</option>
-                    <option value="20">9</option>
-                    <option value="20">10</option>
-                    <option value="20">11</option>
-                    <option value="20">12</option>
-                    <option value="20">13</option>
-                    <option value="20">14</option>
-                    <option value="20">15</option>
-                    <option value="20">16</option>
-                    <option value="20">17</option>
-                    <option value="20">18</option>
-                    <option value="20">19</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
                     <option value="20">20</option>
                     <option value="20">21</option>
                 </select>
 
                 <label for="number">n° d'Appartement:</label>
-                <select style="border: #000 solid 2px;" id="number" name="number">
+                <select style="border: #000 solid 2px;" id="nbr-appart" name="nbr-appart">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
-                    <option value="3">4</option>
-                    <option value="3">5</option>
-                    <option value="3">6</option>
-                    <option value="3">7</option>
-                    <option value="3">8</option>
-                    <option value="20">9</option>
-                    <option value="20">10</option>
-                    <option value="20">11</option>
-                    <option value="20">12</option>
-                    <option value="20">13</option>
-                    <option value="20">14</option>
-                    <option value="20">15</option>
-                    <option value="20">16</option>
-                    <option value="20">17</option>
-                    <option value="20">18</option>
-                    <option value="20">19</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
                     <option value="20">20</option>
                     <option value="20">21</option>
                 </select>
-            </form>
-        </div>
+                <input type="button" class="appartement-validation" value="Valide">
+            </div>
+                </div>
 
         <div id="form2" class="form-container3">
             <form>
@@ -637,6 +637,45 @@
                 const selectedForm = document.getElementById(`form${formNumber}`);
                 selectedForm.style.display = 'block';
             }
+
+            document.querySelector(".appartement-validation").addEventListener("click", ()=>{
+                let nom = document.getElementById('nom-projet').value;
+                let desc = document.getElementById('description').value;
+                let file  = document.getElementById('documents');
+                let nbrbloc = document.getElementById('nbr_bloc').value;
+                let nbrEtage = document.getElementById('nbr-etage').value;
+                let nbrAppart = document.getElementById('nbr-appart').value;
+
+                if(
+                    nom.length == 0 || desc.length == 0 || file.files.length == 0
+                    || nbrbloc.length == 0 || nbrEtage.length == 0 || nbrAppart.length == 0){
+                    alert('Veuillez remplir tous les champs');
+                    return;
+                    }
+                    else {
+
+                        let formData = new FormData();
+                        formData.append('nom', nom);
+                        formData.append('description', desc);
+                        formData.append('testImage', file.files[0]);
+                        formData.append('nbr_bloc', nbrbloc);
+                        formData.append('nbr_etage', nbrEtage);
+                        formData.append('nbr_appart', nbrAppart);
+        
+                        fetch('http://localhost:3000/add-project', {
+                            method: 'POST',
+                            body: formData
+                        }).then((response) => {
+                            return response.json();
+                        }).then((data) => {
+                            console.log(data);
+                        }).catch((error) => {
+                            console.log(error);
+                        })
+                    }
+
+
+            })
 
         </script>
 </body>
