@@ -662,7 +662,7 @@
                         formData.append('nbr_etage', nbrEtage);
                         formData.append('nbr_appart', nbrAppart);
         
-                        fetch('http://localhost:3000/add-project', {
+                        fetch('https://immobile-pfe.onrender.com/add-project', {
                             method: 'POST',
                             body: formData
                         }).then((response) => {
