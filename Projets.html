@@ -498,7 +498,7 @@
         // My Code 
         let ul_pending = document.getElementById("allFacets");
         let ul_finished = document.getElementById("userFacets");
-        fetch('http://localhost:3000/get-pending-project')
+        fetch('https://immobile-pfe.onrender.com/get-pending-project')
             .then(res => res.json())
             .then(data => {
                 enCoursCount = parseInt(data.length)
@@ -523,7 +523,7 @@
 
                 });
             })
-        fetch('http://localhost:3000/get-finished-project')
+        fetch('https://immobile-pfe.onrender.com/get-finished-project')
             .then(res => res.json())
             .then(data => {
                 finiCount = parseInt(data.length)
@@ -583,7 +583,7 @@
                         if (!ui.item.closest('ul').hasClass('second-list')) {
                             ui.item.find('.circle').remove();
                             ui.item.prepend('<div class="circle"></div>');
-                            fetch(`http://localhost:3000/pending-project/${ui.item.attr('id')}`, {
+                            fetch(`https://immobile-pfe.onrender.com/pending-project/${ui.item.attr('id')}`, {
                                 method: 'PUT'
                             }).then(res => res.text()) // or res.json()
                                 .then(res => {
@@ -598,7 +598,7 @@
                         if (!ui.item.closest('ul').hasClass('first-list')) {
                             ui.item.find('.circle').remove();
                             ui.item.prepend('<div class="circle"><i class="fa-solid fa-check"></i></div>');
-                            fetch(`http://localhost:3000/finished-project/${ui.item.attr('id')}`, {
+                            fetch(`https://immobile-pfe.onrender.com/finished-project/${ui.item.attr('id')}`, {
                                 method: 'PUT'
                             }).then(res => res.text())
                                 .then(res => {
@@ -625,7 +625,7 @@
                             let elem = $(item).find(".circle");
                             elem.remove();
                             $(item).prepend('<div class="circle"><i class="fa-solid fa-check"></i></div>');
-                            fetch(`http://localhost:3000/finished-project/${$(item).attr('id')}`, {
+                            fetch(`https://immobile-pfe.onrender.com/finished-project/${$(item).attr('id')}`, {
                                 method: 'PUT'
                             }).then(res => res.text())
                                 .then(res => {
@@ -645,7 +645,7 @@
                             let elem = $(item).find(".circle");
                             elem.remove();
                             $(item).prepend('<div class="circle"></div>');
-                            fetch(`http://localhost:3000/pending-project/${$(item).attr('id')}`, {
+                            fetch(`https://immobile-pfe.onrender.com/pending-project/${$(item).attr('id')}`, {
                                 method: 'PUT'
                             }).then(res => res.text()) // or res.json()
                                 .then(res => {
